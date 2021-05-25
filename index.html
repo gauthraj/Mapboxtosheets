@@ -96,7 +96,7 @@
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
-      center: [-122.411, 37.785], // starting position [lng, lat]
+      center: [82.7792201, 21.1289956], // starting position [lng, lat]
       zoom: 10,// starting zoom
       transformRequest: transformRequest
     });
@@ -105,7 +105,7 @@
       $.ajax({
         type: "GET",
         //YOUR TURN: Replace with csv export link
-        url: 'https://docs.google.com/spreadsheets/d/1_HbpPL1CgYNasdbznE963hwa9fZxhTy7_C43DeNbyQU/gviz/tq?tqx=out:csv&sheet=Sheet1',
+        url: 'https://docs.google.com/spreadsheets/d/1sjL8RDY1ed-bxf4qkpqquRbuExQv3carEGuvW3Xn3Ks/gviz/tq?tqx=out:csv&sheet=Sheet1',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
@@ -143,7 +143,7 @@
               //set popup text
               //You can adjust the values of the popup to match the headers of your CSV.
               // For example: e.features[0].properties.Name is retrieving information from the field Name in the original CSV.
-              var description = `<h3>` + e.features[0].properties.Name + `</h3>` + `<h4>` + `<b>` + `Address: ` + `</b>` + e.features[0].properties.Address + `</h4>` + `<h4>` + `<b>` + `Pincode: ` + `</b>` + e.features[0].properties.Zip_Code + `</h4>`+ `<h4>` + `<b>` + `Citizen Rating: ` + `</b>` + e.features[0].properties.Citizen_rating + `</h4>` + `<h4>` + `<b>` + `Citizen Score: ` + `</b>` + e.features[0].properties.Citizen_Score + `</h4>`;
+              var description = `<h3>` + e.features[0].properties.PHC_Name + `</h3>` + `<h4>` + `<b>` + `Address: ` + `</b>` + e.features[0].properties.PHC_address + `</h4>` + `<h3>` + `<b>` + `Citizen Feedback:` + `</b>` + `</h3>` `<h5>` + `<b>` + `Token System: ` + `</b>` + e.features[0].properties.Token_System + `</h5>`+ `<h5>` + `<b>` + `Appointment: ` + `</b>` + e.features[0].properties.Appointment + `</h5>` + `<h5>` + `<b>` + `Payment: ` + `</b>` + e.features[0].properties.Payment_Method + `</h5>` + `<h5>` + `<b>` + `Social Distance: ` + `</b>` + e.features[0].properties.Social_Distancing + `</h5>` + `<h5>` + `<b>` + `Time_Spent: ` + `</b>` + e.features[0].properties.Time_Spent + `</h5>`;
 
               // Ensure that if the map is zoomed out such that multiple
               // copies of the feature are visible, the popup appears
